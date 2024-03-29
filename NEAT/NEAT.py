@@ -34,7 +34,16 @@ class NEAT:
                         NewNetwork.levels[level].weights[i][j]=network1.levels[level].weights[i][j]
                     else:
                         NewNetwork.levels[level].weights[i][j]=network2.levels[level].weights[i][j]
-        pass
+                        
+    def run(self, rewards):
+        self.population = [network for _, network in sorted(zip(rewards, self.population), key=lambda pair: -pair[0])]
+        for i in range(4, self.population_size):
+            if(i%2==0):
+                self.population[i] = self.crossover(self.population[0], self.population[1])
+            else:
+                self.population[i] = self.crossover(self.population[2], self.population[3])
+        for i in range(4, self.population_size):
+            self.population[i] = self.mutate(self.population[i])
 
-    def run(self):
-        pass
+
+
