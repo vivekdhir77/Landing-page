@@ -14,7 +14,7 @@ function App() {
           <ScrollToTop />
           <Navbar />
           <Switch>
-            <Route path='/' exact component={Home} />
+            <Route path='/ai' exact component={Home} />
           </Switch>
           <Element name="contact">
           <Footer/>
